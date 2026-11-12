@@ -1,5 +1,5 @@
 apiVersion: v2
-name: dpoc-nitroso-primordial
+name: dpoc-nitroso-carbon-primordial
 description: primordial chart for nitroso (platform-level; empty-but-valid — services own the records)
 type: application
 version: 0.1.0
