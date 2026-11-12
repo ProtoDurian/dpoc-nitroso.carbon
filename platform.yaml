@@ -1,0 +1,3 @@
+landscapes: [pichu, raichu, ampharos]
+stages: [pichu, [raichu, ampharos]]   # PLAN §8: raichu and ampharos in parallel after pichu
+maturity: young

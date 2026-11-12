@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.dpoc.platform }}-platform
+  namespace: {{ .Values.dpoc.platform }}
+  labels:
+    dpoc.specpenguin.dev/platform: {{ .Values.dpoc.platform }}
+data:
+  platform: {{ .Values.dpoc.platform | quote }}
+  maturity: {{ .Values.maturity | default "young" | quote }}
+  landscapes: |
+{{ toYaml (.Values.landscapes | default list) | indent 4 }}
+  stages: |
+{{ toYaml (.Values.stages | default list) | indent 4 }}
+  roots: |
+{{ toYaml (.Values.dpoc.roots | default list) | indent 4 }}

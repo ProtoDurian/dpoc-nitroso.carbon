@@ -1,0 +1,11 @@
+# platform facts default to platform.yaml (the fleet loads platform.yaml as a values file);
+# dpoc.platform comes from the platform AppSet.
+dpoc:
+  platform: nitroso
+  roots:
+    - c.dpoc.specpenguin.dev
+    - cf.dpoc.specpenguin.dev
+    - s.dpoc.specpenguin.dev
+landscapes: [pichu, raichu, ampharos]
+stages: [pichu, [raichu, ampharos]]
+maturity: young

@@ -1,0 +1,2 @@
+dpoc-nitroso platform chart
+ConfigMap {{ .Values.dpoc.platform }}-platform in namespace {{ .Values.dpoc.platform }}

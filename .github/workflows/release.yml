@@ -1,0 +1,26 @@
+name: release
+on:
+  push:
+    tags: ["v*.*.*"]
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      REG: reg.dpoc.specpenguin.dev
+    steps:
+      - uses: actions/checkout@v4
+      - name: version
+        run: echo "VER=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+      - name: helm registry login
+        run: echo "${{ secrets.DPOC_REG_PASSWORD }}" | helm registry login "$REG" -u dpoc-ci --password-stdin
+      - name: package and push primordial chart
+        run: |
+          mkdir -p dist
+          helm package infra/primordial --version "$VER" --app-version "$VER" -d dist/
+          helm push "dist/dpoc-nitroso-primordial-$VER.tgz" "oci://$REG/charts"
+      - name: package and push app chart
+        run: |
+          helm package infra/app --version "$VER" --app-version "$VER" -d dist/
+          helm push "dist/dpoc-nitroso-$VER.tgz" "oci://$REG/charts"

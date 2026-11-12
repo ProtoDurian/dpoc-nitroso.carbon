@@ -1,0 +1,6 @@
+apiVersion: v2
+name: dpoc-nitroso
+description: platform chart for nitroso (ConfigMap with the platform facts; rendered once per platform)
+type: application
+version: 0.1.0
+appVersion: 0.1.0
